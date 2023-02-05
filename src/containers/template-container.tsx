@@ -4,7 +4,7 @@ import React from "react";
 interface Props {}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const TemplateContainerContainer: React.FC<Props> = (props) => {
+const TemplateContainer: React.FC<Props> = (props) => {
   return (
     <div className="TemplateComponent">
       <h2 className="TemplateComponent__title">Title</h2>
@@ -13,6 +13,6 @@ const TemplateContainerContainer: React.FC<Props> = (props) => {
   );
 };
 
-TemplateContainerContainer.defaultProps = {};
+TemplateContainer.defaultProps = {};
 
-export default TemplateContainerContainer;
+export default TemplateContainer;

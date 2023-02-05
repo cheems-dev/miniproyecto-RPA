@@ -3,7 +3,7 @@ import React, { lazy, memo } from "react";
 import { Route, Routes } from "react-router-dom";
 
 // Root routes
-const Home = lazy(() => import("../containers/Home/Home.container"));
+const Home = lazy(() => import("../containers/home-container"));
 
 const Router: React.FC = () => {
   const noAuthRoutes = () => {
