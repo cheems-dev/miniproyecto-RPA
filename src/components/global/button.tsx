@@ -1,18 +1,25 @@
 import React from "react";
 
+import { LoadingOutlined } from "@ant-design/icons";
+
 type ButtonTypes = "outlined" | "contained" | "text" | "ghost";
 
 interface Props {
   children: string;
   type?: ButtonTypes;
+  onClick?: () => void;
+  endIcon?: React.ReactNode;
+  startIcon?: React.ReactNode;
   disabled?: boolean;
-  className?: string;
+  loading?: boolean;
 }
 
 const Button: React.FC<Props> = (props) => {
-  const { children, type } = props;
+  const { children, type, disabled, loading, onClick } = props;
+  const { startIcon, endIcon } = props;
 
   const classes = {
+    button: "button",
     contained: "button__contained",
     outlined: "button__outlined",
     ghost: "button__ghost",
@@ -38,7 +45,20 @@ const Button: React.FC<Props> = (props) => {
     }
   };
 
-  return <button className={`button ${styleClass()}`}>{children}</button>;
+  const renderIconStart = () => (loading ? <LoadingOutlined /> : startIcon);
+  const renderChildren = () => (loading ? "Cargando" : children);
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled || !!loading}
+      className={`${classes.button} ${styleClass()}`}
+    >
+      {renderIconStart()}
+      {renderChildren()}
+      {endIcon}
+    </button>
+  );
 };
 
 Button.defaultProps = {
