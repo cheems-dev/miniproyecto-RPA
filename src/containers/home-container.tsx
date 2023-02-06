@@ -1,11 +1,14 @@
 import React from "react";
 
-import { Banner } from "../components";
+import Button from "../components/global/button";
 
 const HomeContainer: React.FC = () => {
   return (
     <div>
-      <Banner>Hola</Banner>
+      <Button>Hola mundo</Button>
+      <Button type="contained">Hola mundo</Button>
+      <Button type="outlined">Hola mundo</Button>
+      <Button type="ghost">Hola mundo</Button>
     </div>
   );
 };
