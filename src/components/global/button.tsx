@@ -2,10 +2,12 @@ import React from "react";
 
 import { LoadingOutlined } from "@ant-design/icons";
 
-type ButtonTypes = "outlined" | "contained" | "text" | "ghost";
+type ButtonStylesTypes = "outlined" | "contained" | "text" | "ghost";
+type ButtonTypes = "submit" | "button" | "reset";
 
 interface Props {
   children: string;
+  buttonStyles?: ButtonStylesTypes;
   type?: ButtonTypes;
   onClick?: () => void;
   endIcon?: React.ReactNode;
@@ -15,8 +17,8 @@ interface Props {
 }
 
 const Button: React.FC<Props> = (props) => {
-  const { children, type, disabled, loading, onClick } = props;
-  const { startIcon, endIcon } = props;
+  const { children, buttonStyles = "text", type = "button", disabled } = props;
+  const { loading, startIcon, endIcon, onClick } = props;
 
   const classes = {
     button: "button",
@@ -27,19 +29,16 @@ const Button: React.FC<Props> = (props) => {
 
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled || !!loading}
-      className={`${classes.button} button__${type}`}
+      className={`${classes.button} button__${buttonStyles}`}
     >
       {renderIconStart()}
       {renderChildren()}
       {endIcon}
     </button>
   );
-};
-
-Button.defaultProps = {
-  type: "text",
 };
 
 export default Button;

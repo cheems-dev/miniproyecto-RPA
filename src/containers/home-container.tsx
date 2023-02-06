@@ -8,24 +8,24 @@ const HomeContainer: React.FC = () => {
   return (
     <div>
       <Button>Hola mundo</Button>
-      <Button type="contained" endIcon={<CloudDownloadOutlined />}>
+      <Button buttonStyles="contained" endIcon={<CloudDownloadOutlined />}>
         Hola mundo
       </Button>
-      <Button type="outlined">Hola mundo</Button>
-      <Button type="ghost">Hola mundo</Button>
-      <Button type="ghost" loading={true}>
+      <Button buttonStyles="outlined">Hola mundo</Button>
+      <Button buttonStyles="ghost">Hola mundo</Button>
+      <Button buttonStyles="ghost" loading={true}>
         Hola mundo
       </Button>
 
       <Button loading={true}>Hola mundo</Button>
-      <Button type="contained" loading={true}>
+      <Button buttonStyles="contained" loading={true}>
         Hola mundo
       </Button>
-      <Button type="outlined" loading={true}>
+      <Button buttonStyles="outlined" loading={true}>
         Hola mundo
       </Button>
 
-      <Button type="outlined" disabled={true}>
+      <Button buttonStyles="outlined" disabled={true}>
         Hola mundo
       </Button>
     </div>
