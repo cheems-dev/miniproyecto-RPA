@@ -20,29 +20,6 @@ const Button: React.FC<Props> = (props) => {
 
   const classes = {
     button: "button",
-    contained: "button__contained",
-    outlined: "button__outlined",
-    ghost: "button__ghost",
-    text: "button__text",
-  };
-
-  const styleClass = () => {
-    switch (type) {
-      case "contained":
-        return classes.contained;
-
-      case "outlined":
-        return classes.outlined;
-
-      case "ghost":
-        return classes.ghost;
-
-      case "text":
-        return classes.text;
-
-      default:
-        return classes.text;
-    }
   };
 
   const renderIconStart = () => (loading ? <LoadingOutlined /> : startIcon);
@@ -52,7 +29,7 @@ const Button: React.FC<Props> = (props) => {
     <button
       onClick={onClick}
       disabled={disabled || !!loading}
-      className={`${classes.button} ${styleClass()}`}
+      className={`${classes.button} button__${type}`}
     >
       {renderIconStart()}
       {renderChildren()}
