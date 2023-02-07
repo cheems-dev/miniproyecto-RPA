@@ -18,7 +18,7 @@ const HomeContainer: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div className="grid">
         {!!topNews?.length &&
           topNews?.map((topNew, id) => (
@@ -36,7 +36,7 @@ const HomeContainer: React.FC = () => {
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 };
 

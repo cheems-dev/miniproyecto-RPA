@@ -1,47 +1,45 @@
-//mapa de diferentes puntos de interrupción
 $breakpoints: (
-  "xs": 0,
-  "sm": 400px,
-  "md": 728px,
-  "lg": 968px,
-  "xl": 1200px,
-  "xxl": 1440px,
+  "mobileS": 320px,
+  "mobileM": 375px,
+  "mobileL": 425px,
+  "tablet": 768px,
+  "laptop": 1024px,
+  "laptopL": 1440px,
   "desktop": 2560px,
 );
 
-//content ->significa que si usamos esta mezcla en otro lugar
-@mixin xs {
-  @media (min-width: map-get($breakpoints, "xs")) {
+@mixin mobileS {
+  @media (min-width: map-get($breakpoints, "mobileS")) {
     @content;
   }
 }
 
-@mixin sm {
-  @media (min-width: map-get($breakpoints, "sm")) {
+@mixin mobileM {
+  @media (min-width: map-get($breakpoints, "mobileM")) {
     @content;
   }
 }
 
-@mixin md {
-  @media (min-width: map-get($breakpoints, "md")) {
+@mixin mobileL {
+  @media (min-width: map-get($breakpoints, "mobileL")) {
     @content;
   }
 }
 
-@mixin lg {
-  @media (min-width: map-get($breakpoints, "lg")) {
+@mixin tablet {
+  @media (min-width: map-get($breakpoints, "tablet")) {
     @content;
   }
 }
 
-@mixin xl {
-  @media (min-width: map-get($breakpoints, "xl")) {
+@mixin laptop {
+  @media (min-width: map-get($breakpoints, "laptop")) {
     @content;
   }
 }
 
-@mixin xxl {
-  @media (min-width: map-get($breakpoints, "xxl")) {
+@mixin laptopL {
+  @media (min-width: map-get($breakpoints, "laptopL")) {
     @content;
   }
 }
@@ -51,8 +49,6 @@ $breakpoints: (
     @content;
   }
 }
-
-//para un ancho de pantalla en específico
 
 @mixin breakpoint($bp: 0) {
   @media (min-width: $bp) {

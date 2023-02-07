@@ -1,0 +1,27 @@
+.navbar {
+  background-color: $_dark-500;
+  padding: 0.8rem 0;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  @include shadow-sm;
+
+  &__container {
+    width: $layout-width;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.6rem;
+  }
+}
