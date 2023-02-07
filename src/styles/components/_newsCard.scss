@@ -1,0 +1,17 @@
+.newsCard {
+  margin: 0.5rem;
+  &__dark {
+    margin: 0.5rem;
+    color: $_white;
+    background-color: $_bg-card-dark;
+  }
+  &__date {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    font-weight: 600;
+  }
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
