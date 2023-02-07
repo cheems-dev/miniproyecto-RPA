@@ -6,4 +6,7 @@ const { API } = CONSTANTS;
 
 export default axios.create({
   baseURL: API.REACT_APP_API_URL,
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
 });
