@@ -26,6 +26,7 @@ const CONSTANTS = {
   API: {
     REACT_APP_API_URL: import.meta.env.VITE_APP_API_URL,
     VITE_APP_API_TOKEN: import.meta.env.VITE_APP_API_TOKEN,
+    REACT_APP_PLATFORM: "WEB",
     // Mock services, change to false if you don't want to mock
     MOCK_SERVICES: false,
     // TODO: If true a registered user with address, billing data and orders will be present
