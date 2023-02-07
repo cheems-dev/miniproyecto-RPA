@@ -30,6 +30,7 @@
     "@vitejs/plugin-react": "^3.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.33.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-node": "^4.1.0",

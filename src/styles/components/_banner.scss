@@ -1,21 +1,15 @@
-.banner {
-  @include xs {
-    color: red;
-  }
+.Banner__title {
+  color: red;
+}
 
-  @include sm {
-    color: blue;
-  }
+.card {
+  background-color: lightgray;
+  padding: 1em;
+  text-align: center;
+}
 
-  @include md {
-    color: green;
-  }
-
-  @include lg {
-    color: yellow;
-  }
-
-  @include xl {
-    color: peru;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  grid-gap: 1em;
 }
