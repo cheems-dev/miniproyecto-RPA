@@ -2,6 +2,8 @@ import React, { lazy, memo } from "react";
 
 import { Route, Routes } from "react-router-dom";
 
+import Layout from "../components/layout";
+
 // Root routes
 const Home = lazy(() => import("../containers/home-container"));
 
@@ -17,7 +19,9 @@ const Router: React.FC = () => {
   return (
     /* TODO: Pending */
     /*  <Suspense fallback={<Backdrop isLoading={true} />}> */
-    <Routes>{noAuthRoutes()}</Routes>
+    <Routes>
+      <Route element={<Layout />}>{noAuthRoutes()}</Route>
+    </Routes>
     /*    </Suspense> */
   );
 };

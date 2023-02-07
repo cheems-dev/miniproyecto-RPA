@@ -16,13 +16,13 @@ interface Props {
   loading?: boolean;
 }
 
+const classes = {
+  button: "button",
+};
+
 const Button: React.FC<Props> = (props) => {
   const { children, buttonStyles = "text", type = "button", disabled } = props;
   const { loading, startIcon, endIcon, onClick } = props;
-
-  const classes = {
-    button: "button",
-  };
 
   const renderIconStart = () => (loading ? <LoadingOutlined /> : startIcon);
   const renderChildren = () => (loading ? "Cargando" : children);

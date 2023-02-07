@@ -9,27 +9,42 @@
   @include shadow;
 
   &__outlined {
-    border: 0.2rem solid $_red-500;
+    border: 0.2rem solid $_red-600;
     background-color: inherit;
-    color: $_red-500;
+    color: $_red-600;
   }
 
   &__contained {
-    background-color: $_red_500;
-    border: 0.2rem solid $_red_500;
+    background-color: $_red_600;
+    border: 0.2rem solid $_red_600;
     color: $_dark_50;
   }
 
   &__text {
-    background-color: $_white;
+    background-color: inherit;
     border: 0.2rem solid inherit;
-    color: $_red_500;
+    color: $_red_100;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1.6px;
+      background: $_red_600;
+      transition: width 0.3s;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
   }
 
   &__ghost {
     background-color: $_red_50;
     border: 0.2rem solid $_red_50;
-    color: $_red_500;
+    color: $_red_600;
   }
 
   &:disabled {
