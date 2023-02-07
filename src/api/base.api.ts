@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const BASE_URL = "https://newsapi.org/v2/";
+import CONSTANTS from "../config/constants";
 
-export const instance = axios.create({
-  baseURL: BASE_URL,
+const { API } = CONSTANTS;
+
+export default axios.create({
+  baseURL: API.REACT_APP_API_URL,
 });

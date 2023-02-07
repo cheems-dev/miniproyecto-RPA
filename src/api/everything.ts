@@ -1,11 +1,14 @@
-import { instance } from "./base.api";
+import instance from "./base.api";
+import CONSTANTS from "../config/constants";
 
 const endpoint = "everything";
+
+const { API } = CONSTANTS;
 
 export const getEverythingByQuery = ({ query }: { query: string }) => {
   return instance.get(endpoint, {
     params: {
-      apiKey: import.meta.env.VITE_REACT_APP_NEWSAPI_KEY,
+      apiKey: API.VITE_APP_API_TOKEN,
       q: query,
     },
   });
@@ -22,7 +25,7 @@ export const getEverythingByQueryAndDate = ({
 }) => {
   return instance.get(endpoint, {
     params: {
-      apiKey: import.meta.env.VITE_REACT_APP_NEWSAPI_KEY,
+      apiKey: API.VITE_APP_API_TOKEN,
       q: query,
       from: initialDate,
       to: endDate,
