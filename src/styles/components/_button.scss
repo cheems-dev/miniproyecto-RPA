@@ -1,0 +1,39 @@
+.button {
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  @include shadow;
+
+  &__outlined {
+    border: 0.2rem solid $_red-500;
+    background-color: inherit;
+    color: $_red-500;
+  }
+
+  &__contained {
+    background-color: $_red_500;
+    border: 0.2rem solid $_red_500;
+    color: $_dark_50;
+  }
+
+  &__text {
+    background-color: $_white;
+    border: 0.2rem solid inherit;
+    color: $_red_500;
+  }
+
+  &__ghost {
+    background-color: $_red_50;
+    border: 0.2rem solid $_red_50;
+    color: $_red_500;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: unset;
+  }
+}

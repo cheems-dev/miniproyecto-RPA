@@ -7,8 +7,12 @@ interface Props {}
 const TemplateContainer: React.FC<Props> = (props) => {
   return (
     <div className="TemplateComponent">
-      <h2 className="TemplateComponent__title">Title</h2>
-      <h2 className="TemplateComponent__subtitle">Subtitle</h2>
+      <h1 itemProp="title" className="TemplateComponent__title">
+        Title
+      </h1>
+      <h2 itemProp="subtitle" className="TemplateComponent__subtitle">
+        Subtitle
+      </h2>
     </div>
   );
 };
