@@ -8,15 +8,21 @@ interface Props {
   urls?: string[]; // requerido
 }
 
+const classes = {
+  navbar: "navbar",
+  container: "navbar__container",
+  icon: "navbar__icon",
+};
+
 const Navbar: React.FC<Props> = (props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { urls } = props;
 
   return (
-    <nav className="navbar">
-      <div className="navbar__container">
+    <nav className={classes.navbar}>
+      <div className={classes.container}>
         <img
-          className="navbar__icon"
+          className={classes.icon}
           src="/public/Logo.png"
           alt="Logo de la editorial web"
         />
