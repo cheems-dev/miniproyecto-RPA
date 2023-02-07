@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import { getTopHeadLinesByCategory } from "../api/top-headlines";
+import NewsCard from "../components/news-card";
+import NewsCardImage from "../components/news-card-image";
+import NewsCardImageVertical from "../components/news-card-image-vertical";
 import { TopNew } from "../types/top-new";
 
 const HomeContainer: React.FC = () => {
@@ -18,7 +21,10 @@ const HomeContainer: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      <NewsCard />
+      <NewsCardImageVertical />
+      <NewsCardImage />
       <div className="grid">
         {!!topNews?.length &&
           topNews?.map((topNew, id) => (
@@ -36,7 +42,7 @@ const HomeContainer: React.FC = () => {
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 };
 

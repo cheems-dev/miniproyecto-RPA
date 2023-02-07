@@ -7,15 +7,26 @@ interface Props {
   image?: string;
 }
 
+const classes = {
+  card: "card__image--horizontal",
+  image: "card__image--horizontal-image",
+  date: "card__image--horizontal-date",
+  title: "card__image--horizontal-title",
+};
+
 const NewsCardImage: React.FC<Props> = (props) => {
   const { title, text, date, image } = props;
 
   return (
-    <div className="cardImage">
-      <img className="cardImage__image" src={image} alt="image" />
-      <span className="cardImage__date">{date}</span>
-      <h3 className="cardImage__title">{title}</h3>
-      <p className="cardImage__text">{text}</p>
+    <div className={classes.card}>
+      <img className={classes.image} src={image} alt="image" />
+      <span itemProp="datePublished" className={classes.date}>
+        {date}
+      </span>
+      <h3 itemProp="title" className={classes.title}>
+        {title}
+      </h3>
+      <p itemProp="description">{text}</p>
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.layout {
+  display: flex;
+  justify-content: center;
+
+  /* TODO: Pending */
+  &__container {
+    padding-top: 2.4rem;
+    width: $layout-width;
+  }
+}

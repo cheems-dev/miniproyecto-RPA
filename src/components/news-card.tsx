@@ -5,13 +5,23 @@ interface Props {
   date?: string;
 }
 
+const classes = {
+  card: "card__new-dark",
+  date: "card__new-date",
+  title: "card__new-title",
+};
+
 const NewsCard: React.FC<Props> = (props) => {
   const { title, date } = props;
 
   return (
-    <div className="newsCard">
-      <span className="newsCard__date">{date}</span>
-      <h3 className="newsCard__title">{title}</h3>
+    <div className={classes.card}>
+      <span itemProp="datePublished" className={classes.date}>
+        {date}
+      </span>
+      <h3 itemProp="title" className={classes.title}>
+        {title}
+      </h3>
     </div>
   );
 };
