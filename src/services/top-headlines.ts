@@ -14,16 +14,18 @@ export const getTopHeadLinesByQuery = ({ query }: { query: string }) => {
   });
 };
 
-export const getTopHeadLinesByCategory = ({
+export const getTopHeadLinesByCategoryandCountry = ({
   category,
+  country,
 }: {
   category: string;
+  country: string;
 }) => {
   return axiosDefault.get(endpoint, {
     params: {
       apiKey: API.VITE_APP_API_TOKEN,
       category,
-      country: "us",
+      country,
     },
   });
 };

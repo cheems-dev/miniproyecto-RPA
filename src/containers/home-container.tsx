@@ -1,42 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { getTopHeadLinesByCategory } from "../services/top-headlines";
+import NewsList from "../components/news/news-list";
+import Search from "../components/search/search";
 import { TopNew } from "../types/top-new";
 
 const HomeContainer: React.FC = () => {
-  const [topNews, setTopNews] = useState<TopNew[]>([]);
-
-  const fetchData = async () => {
-    const { data } = await getTopHeadLinesByCategory({
-      category: "business",
-    });
-    setTopNews(data.articles);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [news, setNews] = useState<TopNew[]>([]);
 
   return (
-    <>
-      <div className="grid">
-        {!!topNews?.length &&
-          topNews?.map((topNew, id) => (
-            <div key={id} className="card">
-              <p>{topNew.title}</p>
-              <img
-                src={topNew.urlToImage}
-                alt="Avatar"
-                style={{ width: "100%" }}
-              />
-              <h4>
-                <b>{topNew.author || "Anonymous"}</b>
-              </h4>
-              <p>{topNew.description}</p>
-            </div>
-          ))}
-      </div>
-    </>
+    <div>
+      <Search setNews={setNews} />
+      <NewsList data={news} />
+    </div>
   );
 };
 

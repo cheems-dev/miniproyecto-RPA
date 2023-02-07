@@ -1,4 +1,4 @@
-// Kioscos Dashboard Project constants
+// Mini Proyecto RPA Digital constants
 
 export const platform = "WEB";
 
