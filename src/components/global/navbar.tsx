@@ -23,7 +23,7 @@ const Navbar: React.FC<Props> = (props) => {
       <div className={classes.container}>
         <img
           className={classes.icon}
-          src="/public/Logo.png"
+          src="/Logo.png"
           alt="Logo de la editorial web"
         />
         <div>
