@@ -10,7 +10,7 @@ const Banner: React.FC<Props> = (props) => {
   const { title, subtitle, children } = props;
 
   return (
-    <div>
+    <div className="banner">
       <h2 className="Banner__title">{title}</h2>
       <h2 className="Banner__subtitle">{subtitle}</h2>
 
