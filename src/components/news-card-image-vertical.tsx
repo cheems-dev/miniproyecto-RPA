@@ -5,6 +5,7 @@ interface Props {
   date?: string;
   image?: string;
 }
+
 const classes = {
   card: "card__image--vertical",
   image: "card__image--vertical-image",
