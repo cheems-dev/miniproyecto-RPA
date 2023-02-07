@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { getTopHeadLinesByCategory } from "../api/top-headlines";
-import { Banner } from "../components";
 import { TopNew } from "../types/top-new";
 
 const HomeContainer: React.FC = () => {
@@ -20,8 +19,6 @@ const HomeContainer: React.FC = () => {
 
   return (
     <div>
-      <Banner>Hola</Banner>
-
       <div className="grid">
         {!!topNews?.length &&
           topNews?.map((topNew, id) => (
