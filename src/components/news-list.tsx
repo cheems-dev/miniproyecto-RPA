@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TopNew } from "../../types/top-new";
+import { TopNew } from "../types/top-new.types";
 
 interface Props {
   data: TopNew[];
