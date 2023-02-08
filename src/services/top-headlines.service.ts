@@ -15,11 +15,10 @@ export const getTopHeadLinesByQuery = ({ query }: { query: string }) => {
   });
 };
 
-/* TODO: Pending dates */
 export const getTopHeadLinesByCategoryAndCountry = (
   payload: Query
 ): Promise<TopNewResponse> => {
-  const { category = "entertainment", country = "ar" } = payload;
+  const { category, country } = payload;
   return axiosDefault.get("/top-headlines", {
     params: {
       apiKey: VITE_APP_API_TOKEN,
