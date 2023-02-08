@@ -1,0 +1,37 @@
+.search {
+
+  &__topheadlines {
+    padding: 0.06rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    font: bold;
+  }
+
+  &__select {
+    padding: 1rem;
+    background-color: $_dark-900;
+    color: $_red-100;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  &__option {
+    background-color: $_dark-500;
+    opacity: 0.4;
+    color: $_white;
+  }
+
+  &__button {
+    background-color: $_red-600;
+    color: $_white;
+    padding: 1.1rem 3rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $_eucalyptus;
+    }
+  }
+}
