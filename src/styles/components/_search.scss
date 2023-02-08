@@ -1,5 +1,4 @@
 .search {
-
   &__topheadlines {
     padding: 0.06rem;
   }
@@ -25,6 +24,7 @@
   }
 
   &__button {
+    margin-left: 0.3rem;
     background-color: $_red-600;
     color: $_white;
     padding: 1.1rem 3rem;
