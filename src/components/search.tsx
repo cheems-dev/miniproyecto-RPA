@@ -1,5 +1,5 @@
-import React, { Dispatch, FormEvent } from "react";
-import { useState, SetStateAction } from "react";
+import React, { FormEvent, SetStateAction } from "react";
+import { useState, Dispatch } from "react";
 
 import { Query } from "../types/query.types";
 import HELPERS from "../utils/helpers";
