@@ -1,11 +1,7 @@
 import React from "react";
 
-import {
-  FacebookFilled,
-  InstagramFilled,
-  TwitterSquareFilled,
-  YoutubeFilled,
-} from "@ant-design/icons";
+import { FacebookFilled, InstagramFilled } from "@ant-design/icons";
+import { TwitterSquareFilled, YoutubeFilled } from "@ant-design/icons";
 
 const classes = {
   footer: "footer",
@@ -20,9 +16,10 @@ const classes = {
 };
 
 const Footer: React.FC = () => (
+  // TODO: Pending add url
   <footer className={classes.footer}>
     <div className={classes.container}>
-      <a itemProp="url" href="/">
+      <a itemProp="url" href="#">
         <img src="/Logo.png" className={classes.logo} />
       </a>
     </div>
@@ -74,7 +71,7 @@ const Footer: React.FC = () => (
       <div className={classes.innerWrap}>
         <p>
           <span>© 2023 Huancayo City.</span>
-          <span>A Diario el Comercio. RPA Company.</span>
+          <span>A todo el ED. RPA Company.</span>
           <span>All Rights Reserved.</span>
         </p>
         <p>

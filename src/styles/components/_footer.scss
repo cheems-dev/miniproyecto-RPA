@@ -1,34 +1,34 @@
 .footer {
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
 
   &__logo-wrap {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 5px 0;
+    padding: 0.5rem 0;
     position: relative;
 
     &::after {
       content: "";
-      background-color: #d9d9d9;
-      height: 1px;
+      background-color: $_red-600;
+      height: 0.1rem;
       width: 100%;
       position: absolute;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
-      z-index: 1;
+      z-index: $_z1;
     }
   }
 
   &__logo {
-    height: 20px;
-    z-index: 2;
+    height: 1.25rem;
+    z-index: $_z2;
     position: relative;
     display: block;
-    background-color: #000;
-    border-radius: 3px;
+    background-color: $_dark-900;
+    border-radius: 0.19rem;
   }
 
   &__wrap-items {
@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    font-size: 2.1rem;
   }
 
   &__wrap-items ul {
@@ -44,7 +45,6 @@
 
   &__item {
     display: inline-block;
-    float: left;
 
     &:last-child a {
       border: none;
@@ -52,21 +52,15 @@
   }
 
   &__item a {
-    color: #000;
-    font: 500 12px/12px Arial;
-    padding: 0 10px;
+    color: $_dark-900;
+    padding: 0 1rem;
     display: inline-block;
-    border-right: 1px solid #000;
-    transition: color 0.2s ease-in;
-    -ms-transition: color 0.2s ease-in;
-    -moz-transition: color 0.2s ease-in;
-    -webkit-transition: color 0.2s ease-in;
+    border-right: 0.06rem solid $_dark-900;
     text-decoration: none;
   }
 
   &__list-title {
-    color: #252525;
-    font: 500 13px/20px, Helvetica Neue, Arial;
+    color: $_dark-900;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -74,26 +68,22 @@
   }
 
   &__inner {
-    max-width: 1120px;
+    max-width: 695rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
   }
 
   &__inner p {
-    color: #737373;
-    font: 500 13px/20px Arial;
-    margin: 5px 0;
+    color: $_boulder;
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
   }
 
   &__inner a {
-    color: #737373;
+    color: $_boulder;
     display: inline-block;
-    font: 500 13px/20px Arial;
-    margin: 0 4px 0 0;
-    transition: color 0.2s ease-in;
-    -ms-transition: color 0.2s ease-in;
-    -moz-transition: color 0.2s ease-in;
-    -webkit-transition: color 0.2s ease-in;
+    font-size: 1.5rem;
+    margin: 0 0.25rem 0 0;
   }
 }

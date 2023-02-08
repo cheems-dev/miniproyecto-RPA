@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { getTopHeadLinesByCategory } from "../api/top-headlines";
-import Footer from "../components/global/footer";
 import NewsCard from "../components/news-card";
 import NewsCardImage from "../components/news-card-image";
 import NewsCardImageVertical from "../components/news-card-image-vertical";
@@ -43,7 +42,6 @@ const HomeContainer: React.FC = () => {
             </div>
           ))}
       </div>
-      <Footer />
     </>
   );
 };
