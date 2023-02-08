@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import NewsList from "../components/news-list";
 import Search from "../components/search";
-import { getTopHeadLinesByCategoryAndCountry } from "../services/top-headlines.service";
-import { TopNew } from "../types/top-new.types";
-
-interface Query {
-  category?: string;
-  country?: string;
-}
+import useTopNew from "../hooks/useTopNew";
+import { Query } from "../types/query.types";
 
 const HomeContainer: React.FC = () => {
   const [query, setQuery] = useState<Query>({
     category: undefined,
     country: undefined,
   });
-  const [news, setNews] = useState<TopNew[]>([]);
 
-  const fetchData = async () => {
-    const response = await getTopHeadLinesByCategoryAndCountry(query);
-    setNews(response?.articles);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [query]);
+  const [news] = useTopNew(query);
 
   return (
     <>

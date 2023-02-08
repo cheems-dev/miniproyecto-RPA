@@ -5,7 +5,7 @@ import ToastUtilities from "../utils/toast-manager";
 const AxiosInterceptor = () => {
   axiosDefault.interceptors.response.use(
     (response) => {
-      return response;
+      return response.data;
     },
     (error) => {
       ToastUtilities.error(getValidationError(error.code));
