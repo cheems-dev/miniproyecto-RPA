@@ -11,7 +11,7 @@ const { categories, countries } = HELPERS;
 const HomeContainer: React.FC = () => {
   const [query, setQuery] = useState<Query>({
     category: categories[0].id,
-    country: countries[1].id,
+    country: countries[0].id,
   });
 
   const [news] = useTopNew(query);

@@ -31,7 +31,6 @@ const Search: React.FC<Props> = (props) => {
             name="country"
             onChange={(e) => setValues({ ...values, country: e.target.value })}
           >
-            <option value="-1">Seleccione un país...</option>
             {countries.map(({ id, country }) => (
               <option key={id} value={id}>
                 {country}
@@ -43,7 +42,6 @@ const Search: React.FC<Props> = (props) => {
             name="category"
             onChange={(e) => setValues({ ...values, category: e.target.value })}
           >
-            <option value="-1">Seleccione una categoría...</option>
             {categories.map(({ id, category }) => (
               <option key={id} value={id}>
                 {category}
