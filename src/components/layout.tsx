@@ -2,6 +2,7 @@ import React from "react";
 
 import { Outlet } from "react-router-dom";
 
+import Footer from "./global/footer";
 import Navbar from "./global/navbar";
 
 const Layout: React.FC = () => {
@@ -15,6 +16,7 @@ const Layout: React.FC = () => {
             <Outlet />
           </div>
         </main>
+        <Footer />
       </>
     </>
   );
