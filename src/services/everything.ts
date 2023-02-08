@@ -1,4 +1,4 @@
-import instance from "./base.api";
+import axiosDefault from "../config/axios";
 import CONSTANTS from "../config/constants";
 
 const endpoint = "everything";
@@ -6,7 +6,7 @@ const endpoint = "everything";
 const { API } = CONSTANTS;
 
 export const getEverythingByQuery = ({ query }: { query: string }) => {
-  return instance.get(endpoint, {
+  return axiosDefault.get(endpoint, {
     params: {
       apiKey: API.VITE_APP_API_TOKEN,
       q: query,
@@ -23,7 +23,7 @@ export const getEverythingByQueryAndDate = ({
   initialDate: string;
   endDate: string;
 }) => {
-  return instance.get(endpoint, {
+  return axiosDefault.get(endpoint, {
     params: {
       apiKey: API.VITE_APP_API_TOKEN,
       q: query,

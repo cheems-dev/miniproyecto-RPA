@@ -1,14 +1,18 @@
 import { HashRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import Router from "./router/Router";
 import "./styles/index.scss";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
-  /* TODO: Pending react-query and context-API */
   return (
-    <HashRouter>
-      <Router />
-    </HashRouter>
+    <>
+      <HashRouter>
+        <Router />
+      </HashRouter>
+      <ToastContainer />
+    </>
   );
 }
 
