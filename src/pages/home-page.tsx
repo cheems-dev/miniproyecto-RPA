@@ -8,7 +8,7 @@ import HELPERS from "../utils/helpers";
 
 const { categories, countries } = HELPERS;
 
-const HomeContainer: React.FC = () => {
+const HomePage: React.FC = () => {
   const [query, setQuery] = useState<Query>({
     category: categories[0].id,
     country: countries[1].id,
@@ -24,4 +24,4 @@ const HomeContainer: React.FC = () => {
   );
 };
 
-export default HomeContainer;
+export default HomePage;

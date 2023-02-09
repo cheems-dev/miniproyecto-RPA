@@ -1,45 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { UserOutlined, MenuOutlined } from "@ant-design/icons";
+import { UserOutlined, MenuOutlined, CloseOutlined } from "@ant-design/icons";
 
 import Button from "./button";
-
-interface Props {
-  urls?: string[]; // requerido
-}
+import CONSTANTS from "../../config/constants";
+import useWindow from "../../hooks/useWindow";
+import HELPERS from "../../utils/helpers";
 
 const classes = {
   navbar: "navbar",
   container: "navbar__container",
   icon: "navbar__icon",
   hidden: "navbar__hidden",
-  cursor: "navbar__cursor",
+  hamburger: "navbar__responsive-icon",
+  menu__responsive: "navbar__responsive-menu",
+  menu__responsive_open: "navbar__responsive-menu_open",
 };
 
-const Navbar: React.FC<Props> = (props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { urls } = props;
+const { links } = HELPERS;
+const { BREAKPOINTS } = CONSTANTS;
 
-  /* TODO: Pending responsive */
+const Navbar: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const [windowSize] = useWindow();
+
+  const renderHamburgerMenu = (className: string, onClick: () => void) =>
+    open ? (
+      <CloseOutlined className={className} onClick={onClick} />
+    ) : (
+      <MenuOutlined className={className} onClick={onClick} />
+    );
+
+  const styleClass = () =>
+    open && windowSize[0] <= BREAKPOINTS.tablet
+      ? classes.menu__responsive_open
+      : "";
+
+  const renderNavbarResponsive = (onClick: () => void) => (
+    <div className={`${classes.menu__responsive} ${styleClass()}`}>
+      <ul>
+        {links.map((link, index) => (
+          <li key={index}>
+            <a onClick={onClick} href={link.route}>
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.container}>
-        <MenuOutlined className={classes.cursor} />
-        <img
-          className={`${classes.icon} ${classes.hidden}`}
-          src="/Logo.png"
-          alt="Logo de la editorial web"
-        />
-        <div className={classes.hidden}>
-          <Button>Inicio</Button>
-          <Button>Categorias</Button>
-          <Button>Autores</Button>
+    <>
+      <nav className={classes.navbar}>
+        <div className={classes.container}>
+          {renderHamburgerMenu(classes.hamburger, () => setOpen(!open))}
+          <img
+            className={`${classes.icon} ${classes.hidden}`}
+            src="/Logo.png"
+            alt="Logo de la editorial web"
+          />
+          <div className={classes.hidden}>
+            {links.map((link, index) => (
+              <Button key={index}>{link.name}</Button>
+            ))}
+          </div>
+          <Button buttonStyles="contained" startIcon={<UserOutlined />}>
+            Inicia sesión
+          </Button>
         </div>
-        <Button buttonStyles="contained" startIcon={<UserOutlined />}>
-          Inicia sesión
-        </Button>
-      </div>
-    </nav>
+        {renderNavbarResponsive(() => setOpen(!open))}
+      </nav>
+    </>
   );
 };
 

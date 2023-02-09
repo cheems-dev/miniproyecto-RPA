@@ -64,5 +64,10 @@ const HELPERS = {
     { id: "sports", value: "Sports" },
     { id: "technology", value: "Technology" },
   ],
+  links: [
+    { route: "", name: "Inicio" },
+    { route: "", name: "Categorias" },
+    { route: "", name: "Autores" },
+  ],
 };
 export default HELPERS;
