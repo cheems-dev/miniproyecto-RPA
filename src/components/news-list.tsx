@@ -1,6 +1,8 @@
 import React from "react";
 
+import NewsCardImage from "./news-card-image";
 import { TopNew } from "../types/top-new.types";
+import formatDate from "../utils/formatDate";
 
 interface Props {
   data: TopNew[];
@@ -11,21 +13,16 @@ const NewsList: React.FC<Props> = (props) => {
 
   return (
     <>
-      <section className="grid">
+      <section className="news-grid">
         {!!data?.length &&
           data?.map((topNew, id) => (
-            <article key={id} className="card">
-              <p>{topNew.title}</p>
-              <img
-                src={topNew.urlToImage}
-                alt="Avatar"
-                style={{ width: "100%" }}
-              />
-              <h4>
-                <b>{topNew.author || "Anonymous"}</b>
-              </h4>
-              <p>{topNew.description}</p>
-            </article>
+            <NewsCardImage
+              key={id}
+              title={topNew.title}
+              text={topNew.description}
+              date={topNew.publishedAt ? formatDate(topNew.publishedAt) : ""}
+              image={topNew.urlToImage}
+            />
           ))}
       </section>
     </>
