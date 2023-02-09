@@ -19,14 +19,22 @@ const NewsCardImage: React.FC<Props> = (props) => {
 
   return (
     <div className={classes.card}>
-      <img className={classes.image} src={image} alt="image" />
+      <img
+        className={classes.image}
+        src={image || NewsCardImage.defaultProps?.image}
+        alt="image"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = "public/404.png";
+        }}
+      />
       <span itemProp="datePublished" className={classes.date}>
         {date}
       </span>
       <h3 itemProp="title" className={classes.title}>
         {title}
       </h3>
-      <p itemProp="description">{text}</p>
+      <p itemProp="description">{text || NewsCardImage.defaultProps?.text}</p>
     </div>
   );
 };
@@ -36,9 +44,7 @@ NewsCardImage.defaultProps = {
   // eslint-disable-next-line max-len
   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt, elit ut tempor congue, urna odio luctus sapien, non rutrum enim diam eu odio. Sed egestas lectus id risus congue, ac interdum magna rhoncus.",
   date: "December 12,2022",
-  image:
-    // eslint-disable-next-line max-len
-    "https://elcomercio.pe/resizer/Vt2fd6RF3B42JpqE79NHbKucwmA=/680x680/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/YAUXM2C4NVGYLLPNC6RLF2OJXM.jfif",
+  image: "public/404.png",
 };
 
 export default NewsCardImage;
