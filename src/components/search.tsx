@@ -1,6 +1,8 @@
 import React, { FormEvent, SetStateAction } from "react";
 import { useState, Dispatch } from "react";
 
+import Button from "./global/button";
+import Select from "./global/select";
 import { Query } from "../types/query.types";
 import HELPERS from "../utils/helpers";
 
@@ -10,11 +12,10 @@ interface Props {
 
 const classes = {
   search: "search",
-  topheadlines: "search__topheadlines",
+  container: "search__container",
   title: "search__title",
-  select: "search__select",
-  option: "search__option",
   button: "search__button",
+  form: "search__form",
 };
 
 const { countries, categories } = HELPERS;
@@ -33,37 +34,26 @@ const Search: React.FC<Props> = (props) => {
 
   return (
     <section className={classes.search}>
-      <h1 className={classes.title}>Search news...</h1>
-      <div className={classes.topheadlines}>
-        <form onSubmit={handleTopSubmit}>
-          <select
-            className={classes.select}
-            name="country"
-            onChange={(e) => setValues({ ...values, country: e.target.value })}
-          >
-            {countries.map(({ id, country }) => (
-              <option className={classes.option} key={id} value={id}>
-                {country}
-              </option>
-            ))}
-          </select>
-
-          <select
-            className={classes.select}
-            name="category"
-            onChange={(e) => setValues({ ...values, category: e.target.value })}
-          >
-            {categories.map(({ id, category }) => (
-              <option className={classes.option} key={id} value={id}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <button className={classes.button} type="submit">
+      <h1 className={classes.title}>Busca tus noticias favoritas...</h1>
+      <form onSubmit={handleTopSubmit} className={classes.form}>
+        <Select
+          label="Paises"
+          id="country"
+          options={countries}
+          onChange={(e) => setValues({ ...values, country: e.target.value })}
+        />
+        <Select
+          label="Categorías"
+          id="category"
+          options={categories}
+          onChange={(e) => setValues({ ...values, category: e.target.value })}
+        />
+        <div className={classes.button}>
+          <Button type="submit" buttonStyles="contained">
             Search
-          </button>
-        </form>
-      </div>
+          </Button>
+        </div>
+      </form>
     </section>
   );
 };

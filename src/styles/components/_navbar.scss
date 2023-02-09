@@ -34,12 +34,10 @@
   }
 
   &__responsive {
+    cursor: pointer;
+
     @include tablet {
       display: none;
     }
-  }
-
-  &__cursor {
-    cursor: pointer;
   }
 }

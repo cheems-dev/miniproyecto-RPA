@@ -1,6 +1,8 @@
 .footer {
-  width: 100%;
-  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-bottom: 3.2rem;
 
   &__logo {
     height: 1.25rem;
@@ -14,7 +16,6 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      padding: 0.5rem 0;
       position: relative;
 
       &::after {
@@ -44,6 +45,11 @@
 
   &__item {
     display: inline-block;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.02);
+    }
 
     & a {
       color: $_dark-900;
@@ -60,7 +66,6 @@
 
   &__list-title {
     color: $_dark-900;
-    margin: 0;
     display: flex;
     justify-content: center;
     width: 100%;
