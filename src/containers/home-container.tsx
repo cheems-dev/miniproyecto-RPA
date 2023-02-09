@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import NewsList from "../components/news-list";
 import Search from "../components/search";
-import { getTopHeadLinesByCategoryAndCountry } from "../services/top-headlines.service";
-import { TopNew } from "../types/top-new.types";
+import useTopNew from "../hooks/useTopNew";
+import { Query } from "../types/query.types";
+import HELPERS from "../utils/helpers";
 
-interface Query {
-  category?: string;
-  country?: string;
-}
+const { categories, countries } = HELPERS;
 
 const HomeContainer: React.FC = () => {
   const [query, setQuery] = useState<Query>({
-    category: undefined,
-    country: undefined,
+    category: categories[0].id,
+    country: countries[0].id,
   });
-  const [news, setNews] = useState<TopNew[]>([]);
 
-  const fetchData = async () => {
-    const response = await getTopHeadLinesByCategoryAndCountry(query);
-    setNews(response?.articles);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [query]);
+  const [news] = useTopNew(query);
 
   return (
     <>
@@ -33,7 +23,5 @@ const HomeContainer: React.FC = () => {
     </>
   );
 };
-
-HomeContainer.defaultProps = {};
 
 export default HomeContainer;
