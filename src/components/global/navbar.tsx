@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { UserOutlined, MenuOutlined, CloseOutlined } from "@ant-design/icons";
 
 import Button from "./button";
-import CONSTANTS from "../../config/constants";
-import useWindow from "../../hooks/useWindow";
+/* import useWindow from "../../hooks/useWindow"; */
 import HELPERS from "../../utils/helpers";
 
 const classes = {
@@ -18,12 +17,11 @@ const classes = {
 };
 
 const { links } = HELPERS;
-const { BREAKPOINTS } = CONSTANTS;
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [windowSize] = useWindow();
-
+  /*  const [windowSize] = useWindow();
+   */
   const renderHamburgerMenu = (className: string, onClick: () => void) =>
     open ? (
       <CloseOutlined className={className} onClick={onClick} />
@@ -31,10 +29,8 @@ const Navbar: React.FC = () => {
       <MenuOutlined className={className} onClick={onClick} />
     );
 
-  const styleClass = () =>
-    open && windowSize[0] <= BREAKPOINTS.tablet
-      ? classes.menu__responsive_open
-      : "";
+  /* && windowSize[0] <= BREAKPOINTS.tablet */
+  const styleClass = () => (open ? classes.menu__responsive_open : "");
 
   const renderNavbarResponsive = (onClick: () => void) => (
     <div className={`${classes.menu__responsive} ${styleClass()}`}>

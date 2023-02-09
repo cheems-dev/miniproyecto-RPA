@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../components/layout";
 
 // Root routes
-const Home = lazy(() => import("../containers/home-container"));
+const Home = lazy(() => import("../pages/home-page"));
 
 const Router: React.FC = () => {
   const noAuthRoutes = () => {
