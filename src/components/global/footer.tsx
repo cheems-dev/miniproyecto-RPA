@@ -13,6 +13,7 @@ const classes = {
   title: "footer__list-title",
   inner: "footer__inner",
   innerWrap: "footer__inner-wrap",
+  icon: "footer__wrap-items-icon",
 };
 
 const Footer: React.FC = () => (
@@ -77,21 +78,6 @@ const Footer: React.FC = () => (
         <p>
           <span>Diario RPA ™ &amp; © 2023 Huancayo City. </span>
         </p>
-        <span>
-          <a href="#">Condiciones de uso</a>
-        </span>
-        <span>
-          <a href="#">Anúnciate</a>
-        </span>
-        <span>
-          <a href="#">Privacidad</a>
-        </span>
-        <span>
-          <a href="#">Contáctanos</a>
-        </span>
-        <span>
-          <a href="#">Elecciones de anuncios</a>
-        </span>
       </div>
     </div>
   </footer>

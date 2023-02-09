@@ -24,4 +24,22 @@
     display: flex;
     gap: 1.6rem;
   }
+
+  &__hidden {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__responsive {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__cursor {
+    cursor: pointer;
+  }
 }
