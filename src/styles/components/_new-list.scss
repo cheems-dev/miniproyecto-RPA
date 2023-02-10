@@ -1,0 +1,17 @@
+.news-grid {
+  display: grid;
+  grid-gap: 1.6rem;
+  margin: 2.4rem 0;
+
+  @include tablet {
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+
+  @include laptopL {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
