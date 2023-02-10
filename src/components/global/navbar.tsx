@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import { UserOutlined, MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { UserOutlined, MenuOutlined } from "@ant-design/icons";
+import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 import Button from "./button";
 import CONSTANTS from "../../config/constants";
+import UserContext from "../../context/users-context";
 import useWindow from "../../hooks/useWindow";
 import HELPERS from "../../utils/helpers";
 
@@ -21,6 +24,7 @@ const { links } = HELPERS;
 const { BREAKPOINTS } = CONSTANTS;
 
 const Navbar: React.FC = () => {
+  const { user, logout } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [windowSize] = useWindow();
 
@@ -65,9 +69,21 @@ const Navbar: React.FC = () => {
               <Button key={index}>{link.name}</Button>
             ))}
           </div>
-          <Button buttonStyles="contained" startIcon={<UserOutlined />}>
-            Inicia sesión
-          </Button>
+          {!user.authenticated ? (
+            <Link to="/auth/login">
+              <Button buttonStyles="contained" startIcon={<UserOutlined />}>
+                Inicia sesión
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              onClick={logout}
+              buttonStyles="contained"
+              endIcon={<LogoutOutlined />}
+            >
+              Cerrar sesión
+            </Button>
+          )}
         </div>
         {renderNavbarResponsive(() => setOpen(!open))}
       </nav>

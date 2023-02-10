@@ -12,17 +12,21 @@ export interface Props {
   children: ReactNode;
 }
 
-export const GlobalsContext = createContext<GlobalsProviderValue>({});
-
 const { categories, countries } = HELPERS;
 const { PAGE_BY_DEFAULT } = CONSTANTS;
 
+const initData = {
+  category: categories[0].id,
+  country: countries[0].id,
+  page: PAGE_BY_DEFAULT,
+};
+
+export const GlobalsContext = createContext<GlobalsProviderValue>({
+  query: initData,
+});
+
 const GlobalsProvider: React.FC<Props> = (props) => {
-  const [query, setQuery] = useState<Query>({
-    category: categories[0].id,
-    country: countries[0].id,
-    page: PAGE_BY_DEFAULT,
-  });
+  const [query, setQuery] = useState<Query>(initData);
 
   const value: GlobalsProviderValue = useMemo(() => {
     return {

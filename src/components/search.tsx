@@ -29,7 +29,7 @@ const Search: React.FC = () => {
     country: countries[0].id,
   });
 
-  const handleTopSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       values.category !== query.category ||
@@ -46,7 +46,7 @@ const Search: React.FC = () => {
   return (
     <section className={classes.search}>
       <h1 className={classes.title}>Busca tus noticias favoritas...</h1>
-      <form onSubmit={handleTopSubmit} className={classes.form}>
+      <form onSubmit={handleSubmit} className={classes.form}>
         <Select
           label="Paises"
           id="country"

@@ -9,6 +9,6 @@ export interface GlobalsProviderProps {
 
 // Provider value
 export interface GlobalsProviderValue {
-  query?: Query;
+  query: Query;
   setQuery?: Dispatch<SetStateAction<Query>>;
 }
