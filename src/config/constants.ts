@@ -12,7 +12,8 @@ const CONSTANTS = {
     ENTRY_PATH: "/",
     SIGN_USER: "/login",
   },
-
+  TOTAL_NEW_BY_DEFAULT: 20,
+  PAGE_BY_DEFAULT: 1,
   API: {
     REACT_APP_API_URL: import.meta.env.VITE_APP_API_URL,
     VITE_APP_API_TOKEN: import.meta.env.VITE_APP_API_TOKEN,
@@ -41,6 +42,8 @@ const CONSTANTS = {
   FORMAT: "mm:ss",
   INTERVAL: 1000,
   INITIAL_TIME: 5 * 1000 * 60,
+  IMAGE_PLACEHOLDER:
+    "https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png",
 };
 
 export default CONSTANTS;

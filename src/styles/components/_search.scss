@@ -18,6 +18,12 @@
   &__form {
     display: flex;
     flex-wrap: wrap;
-    gap: 3.2rem;
+    justify-content: center;
+    gap: 0.8rem;
+
+    @include tablet {
+      justify-content: flex-start;
+      gap: 3.2rem;
+    }
   }
 }

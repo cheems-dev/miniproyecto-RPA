@@ -1,16 +1,14 @@
-import React, { FormEvent, SetStateAction } from "react";
-import { useState, Dispatch } from "react";
+import React, { FormEvent } from "react";
+import { useState } from "react";
 
 import { SearchOutlined } from "@ant-design/icons";
 
 import Button from "./global/button";
 import Select from "./global/select";
+import CONSTANTS from "../config/constants";
+import useGlobals from "../context/globals/globals.hooks";
 import { Query } from "../types/query.types";
 import HELPERS from "../utils/helpers";
-
-interface Props {
-  setQuery: Dispatch<SetStateAction<Query>>;
-}
 
 const classes = {
   search: "search",
@@ -21,9 +19,11 @@ const classes = {
 };
 
 const { countries, categories } = HELPERS;
+const { PAGE_BY_DEFAULT } = CONSTANTS;
 
-const Search: React.FC<Props> = (props) => {
-  const { setQuery } = props;
+const Search: React.FC = () => {
+  const { query, setQuery } = useGlobals();
+
   const [values, setValues] = useState<Query>({
     category: categories[0].id,
     country: countries[0].id,
@@ -31,7 +31,16 @@ const Search: React.FC<Props> = (props) => {
 
   const handleTopSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setQuery(values);
+    if (
+      values.category !== query.category ||
+      values.country !== query.country
+    ) {
+      setQuery({
+        category: values.category,
+        country: values.country,
+        page: PAGE_BY_DEFAULT,
+      });
+    }
   };
 
   return (

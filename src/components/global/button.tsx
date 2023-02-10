@@ -14,6 +14,7 @@ interface Props {
   startIcon?: React.ReactNode;
   disabled?: boolean;
   loading?: boolean;
+  className?: string;
 }
 
 const classes = {
@@ -23,6 +24,7 @@ const classes = {
 const Button: React.FC<Props> = (props) => {
   const { children, buttonStyles = "text", type = "button", disabled } = props;
   const { loading, startIcon, endIcon, onClick } = props;
+  const { className } = props;
 
   const renderIconStart = () => (loading ? <LoadingOutlined /> : startIcon);
   const renderChildren = () => (loading ? "Cargando" : children);
@@ -32,7 +34,7 @@ const Button: React.FC<Props> = (props) => {
       type={type}
       onClick={onClick}
       disabled={disabled || !!loading}
-      className={`${classes.button} button__${buttonStyles}`}
+      className={`${classes.button} button__${buttonStyles} ${className}`}
     >
       {renderIconStart()}
       {renderChildren()}
