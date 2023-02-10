@@ -1,6 +1,8 @@
 import React, { FormEvent, SetStateAction } from "react";
 import { useState, Dispatch } from "react";
 
+import { SearchOutlined } from "@ant-design/icons";
+
 import Button from "./global/button";
 import Select from "./global/select";
 import { Query } from "../types/query.types";
@@ -23,8 +25,8 @@ const { countries, categories } = HELPERS;
 const Search: React.FC<Props> = (props) => {
   const { setQuery } = props;
   const [values, setValues] = useState<Query>({
-    category: undefined,
-    country: undefined,
+    category: categories[0].id,
+    country: countries[0].id,
   });
 
   const handleTopSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -49,7 +51,11 @@ const Search: React.FC<Props> = (props) => {
           onChange={(e) => setValues({ ...values, category: e.target.value })}
         />
         <div className={classes.button}>
-          <Button type="submit" buttonStyles="contained">
+          <Button
+            type="submit"
+            buttonStyles="contained"
+            endIcon={<SearchOutlined />}
+          >
             Search
           </Button>
         </div>

@@ -1,32 +1,55 @@
 import React from "react";
 
+import Button from "./global/button";
+import CONSTANTS from "../config/constants";
+
 interface Props {
   title?: string;
   text?: string;
   date?: string;
   image?: string;
+  author?: string;
+  url?: string;
 }
 
 const classes = {
   card: "card__image--horizontal",
   image: "card__image--horizontal-image",
-  date: "card__image--horizontal-date",
+  content: "card__image--horizontal-content",
   title: "card__image--horizontal-title",
+  container: "card__image--horizontal-container",
+  author: "card__image--horizontal-author",
+  href: "card__image--horizontal-href",
 };
 
+const { IMAGE_PLACEHOLDER } = CONSTANTS;
+
 const NewsCardImage: React.FC<Props> = (props) => {
-  const { title, text, date, image } = props;
+  const { title, text, date, image, author } = props;
+  const { url } = props;
 
   return (
     <div className={classes.card}>
-      <img className={classes.image} src={image} alt="image" />
-      <span itemProp="datePublished" className={classes.date}>
-        {date}
-      </span>
-      <h3 itemProp="title" className={classes.title}>
-        {title}
-      </h3>
-      <p itemProp="description">{text}</p>
+      <img
+        className={classes.image}
+        src={image ?? IMAGE_PLACEHOLDER}
+        alt="image"
+      />
+      <div className={classes.container}>
+        <div className={classes.content}>
+          <span itemProp="datePublished" className={classes.author}>
+            {author?.toLocaleUpperCase() ?? "-"}
+          </span>
+          <span itemProp="datePublished">{date}</span>
+        </div>
+        <h3 itemProp="title" className={classes.title}>
+          {title}
+        </h3>
+        <p itemProp="description">{text}</p>
+        <a href={url} target="_blank" rel="noreferrer" className={classes.href}>
+          <Button buttonStyles="contained">Ver más</Button>
+        </a>
+      </div>
     </div>
   );
 };
