@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import UserContext from "../context/users-context";
 import HomePage from "../pages/home-page";
 import LoginPage from "../pages/login-page";
+import PremiumNew from "../pages/premium-new";
 import PremiumPage from "../pages/premium-page";
 
 const Router: React.FC = () => {
@@ -24,6 +25,7 @@ const Router: React.FC = () => {
       <>
         <Route path="/" element={<HomePage />} />
         <Route path="premium" element={<PremiumPage />} />
+        <Route path="premium/:newtitle/:id" element={<PremiumNew />} />
       </>
     );
   };
