@@ -1,0 +1,23 @@
+.select {
+  padding: 1rem;
+  background-color: $_dark-900;
+  color: $_red-100;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+  }
+
+  &__option {
+    background-color: $_dark-500;
+    opacity: 0.4;
+    color: $_white;
+  }
+}

@@ -13,7 +13,27 @@ const classes = {
   title: "footer__list-title",
   inner: "footer__inner",
   innerWrap: "footer__inner-wrap",
+  icon: "footer__wrap-items-icon",
 };
+
+const socialList = [
+  {
+    url: "",
+    icon: <FacebookFilled />,
+  },
+  {
+    url: "",
+    icon: <InstagramFilled />,
+  },
+  {
+    url: "",
+    icon: <TwitterSquareFilled />,
+  },
+  {
+    url: "",
+    icon: <YoutubeFilled />,
+  },
+];
 
 const Footer: React.FC = () => (
   // TODO: Pending add url
@@ -23,49 +43,19 @@ const Footer: React.FC = () => (
         <img src="/Logo.png" className={classes.logo} />
       </a>
     </div>
-    <div className={classes.wrap}>
-      <ul>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            Categorias
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            Autores
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            Libre
-          </a>
-        </li>
-      </ul>
-    </div>
-    <h5 className={classes.title}>Siguenos</h5>
-    <div className={classes.wrap}>
-      <ul>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            <FacebookFilled />
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            <InstagramFilled />
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            <TwitterSquareFilled />
-          </a>
-        </li>
-        <li className={classes.item}>
-          <a itemProp="url" href="#">
-            <YoutubeFilled />
-          </a>
-        </li>
-      </ul>
+    <div>
+      <p className={classes.title}>Siguenos</p>
+      <div className={classes.wrap}>
+        <ul>
+          {socialList.map((social, index) => (
+            <li className={classes.item} key={index}>
+              <a itemProp={social.url} href="#">
+                {social.icon}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
     <div className={classes.inner}>
       <div className={classes.innerWrap}>
@@ -77,21 +67,6 @@ const Footer: React.FC = () => (
         <p>
           <span>Diario RPA ™ &amp; © 2023 Huancayo City. </span>
         </p>
-        <span>
-          <a href="#">Condiciones de uso</a>
-        </span>
-        <span>
-          <a href="#">Anúnciate</a>
-        </span>
-        <span>
-          <a href="#">Privacidad</a>
-        </span>
-        <span>
-          <a href="#">Contáctanos</a>
-        </span>
-        <span>
-          <a href="#">Elecciones de anuncios</a>
-        </span>
       </div>
     </div>
   </footer>

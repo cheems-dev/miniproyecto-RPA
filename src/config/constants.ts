@@ -10,22 +10,14 @@ const CONSTANTS = {
   ROUTES: {
     // Router where the user will land initially to check authentication
     ENTRY_PATH: "/",
-    ADMIN_ENTRY_PATH: "/administratorPanel",
-    // Router where the user will land if not authenticated
-    NO_AUTH_PATH: "/",
-    // admin panel
-    ADMIN_PAYMENT_LIST: "/adminPaymentList",
-    ADMIN_CLIENT_LIST: "/adminClientList",
-    USER_PAYMENT_DETAILS: "/userPaymentDetails",
-    USER_PAYMENT_LIST: "/userPaymentList",
-    SETTINGS: "/settings",
-    SIGN_USER: "/sign",
+    SIGN_USER: "/login",
   },
-  ACCOUNT_NUMBER: import.meta.env.VITE_ACCOUNT_NUMBER,
-  CCI_ACCOUNT_NUMBER: import.meta.env.VITE_CCI_ACCOUNT_NUMBER,
+  TOTAL_NEW_BY_DEFAULT: 20,
+  PAGE_BY_DEFAULT: 1,
   API: {
     REACT_APP_API_URL: import.meta.env.VITE_APP_API_URL,
     VITE_APP_API_TOKEN: import.meta.env.VITE_APP_API_TOKEN,
+    REACT_APP_API_AUTH_URL: import.meta.env.VITE_APP_API_AUTH_URL,
     REACT_APP_PLATFORM: "WEB",
     // Mock services, change to false if you don't want to mock
     MOCK_SERVICES: false,
@@ -50,6 +42,8 @@ const CONSTANTS = {
   FORMAT: "mm:ss",
   INTERVAL: 1000,
   INITIAL_TIME: 5 * 1000 * 60,
+  IMAGE_PLACEHOLDER:
+    "https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png",
 };
 
 export default CONSTANTS;

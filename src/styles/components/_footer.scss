@@ -1,25 +1,11 @@
 .footer {
-  width: 100%;
-  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-bottom: 1.6rem;
 
-  &__logo-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem 0;
-    position: relative;
-
-    &::after {
-      content: "";
-      background-color: $_red-600;
-      height: 0.1rem;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      z-index: $_z1;
-    }
+  @include tablet {
+    padding-bottom: 3.2rem;
   }
 
   &__logo {
@@ -29,6 +15,25 @@
     display: block;
     background-color: $_dark-900;
     border-radius: 0.19rem;
+
+    &-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      &::after {
+        content: "";
+        background-color: $_red-600;
+        height: 0.1rem;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: $_z1;
+      }
+    }
   }
 
   &__wrap-items {
@@ -36,32 +41,35 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 2.1rem;
-  }
 
-  &__wrap-items ul {
-    padding: 0;
+    & ul {
+      font-size: 1.6rem;
+    }
   }
 
   &__item {
     display: inline-block;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    & a {
+      color: $_dark-900;
+      padding: 0 1rem;
+      display: inline-block;
+      border-right: 0.06rem solid $_dark-900;
+      text-decoration: none;
+    }
 
     &:last-child a {
       border: none;
     }
   }
 
-  &__item a {
-    color: $_dark-900;
-    padding: 0 1rem;
-    display: inline-block;
-    border-right: 0.06rem solid $_dark-900;
-    text-decoration: none;
-  }
-
   &__list-title {
     color: $_dark-900;
-    margin: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -72,18 +80,18 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-  }
 
-  &__inner p {
-    color: $_boulder;
-    font-size: 1.3rem;
-    margin: 0.5rem 0;
-  }
+    & p {
+      color: $_boulder;
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+    }
 
-  &__inner a {
-    color: $_boulder;
-    display: inline-block;
-    font-size: 1.5rem;
-    margin: 0 0.25rem 0 0;
+    & a {
+      color: $_boulder;
+      display: inline-block;
+      font-size: 1.5rem;
+      margin: 0 0.25rem 0 0;
+    }
   }
 }

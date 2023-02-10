@@ -18,12 +18,13 @@ export const getTopHeadLinesByQuery = ({ query }: { query: string }) => {
 export const getTopHeadLinesByCategoryAndCountry = (
   payload: Query
 ): Promise<TopNewResponse> => {
-  const { category, country } = payload;
+  const { category, country, page } = payload;
   return axiosDefault.get("/top-headlines", {
     params: {
       apiKey: VITE_APP_API_TOKEN,
       category,
       country,
+      page,
     },
   });
 };

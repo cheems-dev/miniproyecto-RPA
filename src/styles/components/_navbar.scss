@@ -6,13 +6,19 @@
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: $z-menu;
   @include shadow-sm;
 
   &__container {
-    width: $layout-width;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: $layout-width-sm;
+
+    @include tablet {
+      width: $layout-width;
+    }
   }
 
   &__icon {
@@ -23,5 +29,56 @@
   &__nav {
     display: flex;
     gap: 1.6rem;
+  }
+
+  &__hidden {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__responsive {
+    &-icon {
+      color: $_white;
+      cursor: pointer;
+      font-size: 2.4rem;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        background-color: $_dark-500;
+        padding: 1.6rem 0;
+      }
+
+      a,
+      a:visited {
+        font-size: 1.6rem;
+        text-decoration: none;
+      }
+
+      &_open {
+        transform: translateX(0);
+      }
+    }
   }
 }

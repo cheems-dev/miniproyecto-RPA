@@ -1,69 +1,74 @@
-import React, { FormEvent, SetStateAction } from "react";
-import { useState, Dispatch } from "react";
+import React, { FormEvent } from "react";
+import { useState } from "react";
 
+import { SearchOutlined } from "@ant-design/icons";
+
+import Button from "./global/button";
+import Select from "./global/select";
+import CONSTANTS from "../config/constants";
+import useGlobals from "../context/globals/globals.hooks";
 import { Query } from "../types/query.types";
 import HELPERS from "../utils/helpers";
 
-interface Props {
-  setQuery: Dispatch<SetStateAction<Query>>;
-}
-
 const classes = {
   search: "search",
-  topheadlines: "search__topheadlines",
+  container: "search__container",
   title: "search__title",
-  select: "search__select",
-  option: "search__option",
   button: "search__button",
+  form: "search__form",
 };
 
 const { countries, categories } = HELPERS;
+const { PAGE_BY_DEFAULT } = CONSTANTS;
 
-const Search: React.FC<Props> = (props) => {
-  const { setQuery } = props;
+const Search: React.FC = () => {
+  const { query, setQuery } = useGlobals();
+
   const [values, setValues] = useState<Query>({
-    category: undefined,
-    country: undefined,
+    category: categories[0].id,
+    country: countries[0].id,
   });
 
-  const handleTopSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setQuery(values);
+    if (
+      values.category !== query.category ||
+      values.country !== query.country
+    ) {
+      setQuery({
+        category: values.category,
+        country: values.country,
+        page: PAGE_BY_DEFAULT,
+      });
+    }
   };
 
   return (
     <section className={classes.search}>
-      <h1 className={classes.title}>Search news...</h1>
-      <div className={classes.topheadlines}>
-        <form onSubmit={handleTopSubmit}>
-          <select
-            className={classes.select}
-            name="country"
-            onChange={(e) => setValues({ ...values, country: e.target.value })}
+      <h1 className={classes.title}>Busca tus noticias favoritas...</h1>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <Select
+          label="Paises"
+          id="country"
+          options={countries}
+          onChange={(e) => setValues({ ...values, country: e.target.value })}
+        />
+        <Select
+          label="Categorías"
+          id="category"
+          options={categories}
+          onChange={(e) => setValues({ ...values, category: e.target.value })}
+        />
+        <div className={classes.button}>
+          <Button
+            type="submit"
+            buttonStyles="contained"
+            endIcon={<SearchOutlined />}
           >
-            {countries.map(({ id, country }) => (
-              <option className={classes.option} key={id} value={id}>
-                {country}
-              </option>
-            ))}
-          </select>
-
-          <select
-            className={classes.select}
-            name="category"
-            onChange={(e) => setValues({ ...values, category: e.target.value })}
-          >
-            {categories.map(({ id, category }) => (
-              <option className={classes.option} key={id} value={id}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <button className={classes.button} type="submit">
             Search
-          </button>
-        </form>
-      </div>
+          </Button>
+        </div>
+      </form>
     </section>
   );
 };
