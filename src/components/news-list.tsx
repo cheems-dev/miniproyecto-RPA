@@ -2,7 +2,7 @@ import React from "react";
 
 import NewsCardImage from "./news-card-image";
 import { TopNew } from "../types/top-new.types";
-import formatDate from "../utils/formatDate";
+import formatDate from "../utils/format-date";
 
 interface Props {
   data: TopNew[];
