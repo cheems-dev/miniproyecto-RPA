@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface, prettier/prettier
 interface Props {}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PremiumPage: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+
   const [news, setNews] = useState([]);
 
   const fetchData = async () => {
@@ -17,6 +20,12 @@ const PremiumPage: React.FC<Props> = (props) => {
     setNews(data?.news?.docs);
   };
 
+  const handleClickUrl = (id: number, title: string) => {
+    const url = title.toLowerCase().split(" ").join("-");
+    const friendlyUrl = url.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    navigate(`/premium/${friendlyUrl}/${id}`);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,8 +34,8 @@ const PremiumPage: React.FC<Props> = (props) => {
     <div className="grid-cards">
       {!!news?.length &&
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        news?.map((noticia: any, id) => (
-          <article key={id} className="card-container">
+        news?.map(({ id, category, title, description, author }: any, i) => (
+          <article key={i} className="card-container">
             <div className="card-section-image">
               <img
                 className="card-image"
@@ -37,19 +46,24 @@ const PremiumPage: React.FC<Props> = (props) => {
             </div>
             <div className="card-section-information">
               <div className="card-category">
-                <h2>{noticia.category}</h2>
+                <h2>{category}</h2>
               </div>
               <div className="card-title">
-                <h1>{noticia.title}</h1>
+                <h1>{title}</h1>
               </div>
               <div className="card-description">
-                <h1>{noticia.description}</h1>
+                <h1>{description}</h1>
               </div>
               <div className="card-author">
-                <h3 className="card-author-name">By: {noticia.author}</h3>
+                <h3 className="card-author-name">By: {author}</h3>
               </div>
               <div className="card-button-div">
-                <button className="card-button">Ver noticia</button>
+                <button
+                  onClick={() => handleClickUrl(id, title)}
+                  className="card-button"
+                >
+                  Ver noticia
+                </button>
               </div>
             </div>
           </article>
