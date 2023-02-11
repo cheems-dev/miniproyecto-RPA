@@ -3,6 +3,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+const classes = {
+  new: "new",
+  category: "new__category",
+  title: "new__title",
+  image: "new__image",
+  description: "new__description",
+  content: "new__content",
+  small: "new__small",
+  author: "new__author",
+};
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface, prettier/prettier
 interface Props {}
 
@@ -34,18 +45,22 @@ const PremiumNew: React.FC<Props> = (props) => {
   }, [id]);
 
   return (
-    <div className="TemplateComponent">
-      <p>{newFound?.category}</p>
-      <h1 itemProp="title" className="TemplateComponent__title">
+    <div className={classes.new}>
+      <label className={classes.category}>{newFound?.category}</label>
+      <h1 itemProp="title" className={classes.title}>
         {newFound?.title}
       </h1>
-      <h2 itemProp="subtitle" className="TemplateComponent__subtitle">
+      <img className={classes.image} src={newFound?.urlToImage} />
+      <h2 itemProp="subtitle" className={classes.description}>
         {newFound?.description}
       </h2>
       <hr></hr>
       <hr></hr>
-      <p>{newFound?.content}</p>
-      <p>Redactado por: {newFound?.author}</p>
+      <p className={classes.content}>{newFound?.content}</p>
+      <p className={classes.author}>
+        <small className={classes.small}>Redactado por:</small>{" "}
+        {newFound?.author}
+      </p>
     </div>
   );
 };

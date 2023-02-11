@@ -3,14 +3,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface, prettier/prettier
-interface Props {}
+const classes = {
+  card: "card",
+  container: "card__container",
+  section: "card__section-img",
+  img: "card__img",
+  wrap: "card__section-information",
+  category: "card__category",
+  title: "card__title",
+  description: "card__description",
+  author: "card__author",
+  button: "card__button-container",
+  buton: "card__button",
+};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const PremiumPage: React.FC<Props> = (props) => {
-  const navigate = useNavigate();
-
+// TODO: pending
+const PremiumPage: React.FC = () => {
   const [news, setNews] = useState([]);
+
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const { data } = await axios.get(
@@ -31,47 +42,51 @@ const PremiumPage: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <div className="grid-cards">
-      {!!news?.length &&
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        news?.map(({ id, category, title, description, author }: any, i) => (
-          <article key={i} className="card-container">
-            <div className="card-section-image">
-              <img
-                className="card-image"
-                // eslint-disable-next-line max-len
-                src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Fire_inside_an_abandoned_convent_in_Massueville%2C_Quebec%2C_Canada.jpg"
-                alt="image"
-              />
-            </div>
-            <div className="card-section-information">
-              <div className="card-category">
-                <h2>{category}</h2>
-              </div>
-              <div className="card-title">
-                <h1>{title}</h1>
-              </div>
-              <div className="card-description">
-                <h1>{description}</h1>
-              </div>
-              <div className="card-author">
-                <h3 className="card-author-name">By: {author}</h3>
-              </div>
-              <div className="card-button-div">
-                <button
-                  onClick={() => handleClickUrl(id, title)}
-                  className="card-button"
-                >
-                  Ver noticia
-                </button>
-              </div>
-            </div>
-          </article>
-        ))}
-    </div>
+    <>
+      <div className={classes.card}>
+        {!!news?.length &&
+          news?.map(
+            (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              { id, urlToImage, category, title, description, author }: any,
+              i
+            ) => (
+              <article key={i} className={classes.container}>
+                <div className={classes.section}>
+                  <img
+                    className={classes.img}
+                    src={urlToImage}
+                    alt="image"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = "public/404.png";
+                    }}
+                  />
+                </div>
+                <div className={classes.wrap}>
+                  <h2 className={classes.category}>{category}</h2>
+
+                  <h1 className={classes.title}>{title}</h1>
+
+                  <p className={classes.description}>{description}</p>
+
+                  <h3 className={classes.author}>By: {author}</h3>
+
+                  <div className={classes.button}>
+                    <button
+                      onClick={() => handleClickUrl(id, title)}
+                      className={classes.buton}
+                    >
+                      Ver noticia
+                    </button>
+                  </div>
+                </div>
+              </article>
+            )
+          )}
+      </div>
+    </>
   );
 };
-
-PremiumPage.defaultProps = {};
 
 export default PremiumPage;

@@ -1,0 +1,71 @@
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48.12rem, 1fr));
+  padding: 1.5rem;
+  justify-items: center;
+  gap: 2rem;
+
+  &__container {
+    width: 48.12rem;
+    display: flex;
+    background-color: $_alabaster;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.62rem $_dark_900;
+    @include premiun() {
+      margin-left: -5rem;
+    }
+  }
+
+  &__section-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__section-information {
+    padding: 0.2em 0.8em;
+    position: relative;
+  }
+
+  &__category {
+    color: $_dark_200;
+    font-size: 1.6rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  &__author {
+    text-align: right;
+    color: $-charcoal;
+    padding: 0.2rem 0rem;
+    border-top: 0.06rem solid $_red-700;
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+  }
+
+  &__button-container {
+    text-align: center;
+  }
+
+  &__button {
+    color: $_white;
+    background-color: $_red-700;
+    margin-top: 0.5em;
+    padding: 1em 1.8em;
+    outline: none;
+    border: 0;
+    font-size: 0.9rem;
+    border-radius: 0.2rem;
+  }
+}

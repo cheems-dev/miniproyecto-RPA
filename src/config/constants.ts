@@ -10,7 +10,13 @@ const CONSTANTS = {
   ROUTES: {
     // Router where the user will land initially to check authentication
     ENTRY_PATH: "/",
+    DEFAULT_ROUTE: "/*",
+    AUTH: "auth",
+    AUTH_PROTECTION: "auth/*",
+    AUTH_DEFAULT: "/auth",
     SIGN_USER: "/login",
+    PREMIUM: "premium",
+    PREMIUM_NEW_ID: "premium/:newtitle/:id",
   },
   TOTAL_NEW_BY_DEFAULT: 20,
   PAGE_BY_DEFAULT: 1,

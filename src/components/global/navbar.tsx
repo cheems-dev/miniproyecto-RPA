@@ -45,9 +45,9 @@ const Navbar: React.FC = () => {
       <ul>
         {links.map((link, index) => (
           <li key={index}>
-            <a onClick={onClick} href={link.route}>
+            <Link to={link.route} onClick={onClick}>
               {link.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -66,7 +66,9 @@ const Navbar: React.FC = () => {
           />
           <div className={classes.hidden}>
             {links.map((link, index) => (
-              <Button key={index}>{link.name}</Button>
+              <Link key={index} to={link.route}>
+                <Button key={index}>{link.name}</Button>
+              </Link>
             ))}
           </div>
           {!user.authenticated ? (
