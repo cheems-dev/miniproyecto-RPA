@@ -8,11 +8,20 @@ import HELPERS from "../utils/helpers";
 const { countriesPremium, categoriesPremium } = HELPERS;
 const { PAGE_BY_DEFAULT } = CONSTANTS;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface, prettier/prettier
-interface Props {}
+const classes = {
+  form: "form",
+  wrap: "form__wrap-logo",
+  logo: "form__logo",
+  head: "form__head",
+  title: "form__title",
+  description: "form__description",
+  group: "form__group",
+  label: "form__label",
+  input: "form__input",
+  submit: "form__submit",
+};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const LoginPage: React.FC<Props> = (props) => {
+const LoginPage: React.FC = () => {
   const { login } = useContext(UserContext);
   const { setQuery } = useGlobals();
 
@@ -26,21 +35,24 @@ const LoginPage: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-logo">
-        <img className="logo" src="./Logo.png" />
+    <div className={classes.form}>
+      <div className={classes.wrap}>
+        <img className={classes.logo} src="./Logo.png" />
       </div>
-      <div className="form-head">
-        <p className="form-title">Hola de nuevo 👋</p>
-        <p className="form-description">
+      <div className={classes.head}>
+        <p className={classes.title}>Hola de nuevo 👋</p>
+        <p className={classes.description}>
           Con la versión premium tendrás artículos exclusivos que podrás
           disfrutar
         </p>
       </div>
       <form>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div className={classes.group}>
+          <label className={classes.label} htmlFor="email">
+            Email
+          </label>
           <input
+            className={classes.input}
             type="email"
             value="jair@gmail.com"
             id="email"
@@ -48,9 +60,12 @@ const LoginPage: React.FC<Props> = (props) => {
             readOnly
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div className={classes.group}>
+          <label className={classes.label} htmlFor="password">
+            Password
+          </label>
           <input
+            className={classes.input}
             type="password"
             value="123456"
             id="password"
@@ -58,14 +73,12 @@ const LoginPage: React.FC<Props> = (props) => {
             readOnly
           />
         </div>
-        <button onClick={handleSubmit} className="form-submit" type="submit">
+        <button onClick={handleSubmit} className={classes.submit} type="submit">
           Ingresar
         </button>
       </form>
     </div>
   );
 };
-
-LoginPage.defaultProps = {};
 
 export default LoginPage;

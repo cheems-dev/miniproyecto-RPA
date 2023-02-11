@@ -1,0 +1,43 @@
+.new{
+  padding: 2rem 0rem;
+
+  &__category{
+    background-color: $_red_500;
+    border-radius: 5rem;
+    color: $_white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+  }
+
+  &__title{
+    font-weight: 600;
+    font-size: 3.4rem;
+  }
+
+  &__image{
+    width: 80rem;
+  }
+
+  &__description{
+    font-size: 2rem;
+    font-style: oblique;
+    font-weight: 600;
+    margin: 1rem 0rem;    
+  }
+
+  &__content{
+    font-size: 1.8rem;
+    margin: 1rem 0rem;
+  }
+
+  &__small{
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  &__author{
+    font-style: oblique;
+    text-align: right;
+  }
+
+}
