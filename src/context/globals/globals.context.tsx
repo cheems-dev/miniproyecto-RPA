@@ -27,17 +27,25 @@ export const GlobalsContext = createContext<GlobalsProviderValue>({
   setQuery(value: React.SetStateAction<Query>): void {
     throw new Error("Function not implemented.");
   },
+  loading: false,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setLoading(value: React.SetStateAction<boolean>): void {
+    throw new Error("Function not implemented.");
+  },
 });
 
 const GlobalsProvider: React.FC<Props> = (props) => {
   const [query, setQuery] = useState<Query>(initData);
+  const [loading, setLoading] = useState(false);
 
   const value: GlobalsProviderValue = useMemo(() => {
     return {
       query,
       setQuery,
+      loading,
+      setLoading,
     };
-  }, [query]);
+  }, [query, loading]);
 
   return (
     <GlobalsContext.Provider value={value}>

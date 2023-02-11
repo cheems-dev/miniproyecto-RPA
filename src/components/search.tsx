@@ -31,7 +31,7 @@ interface Props {
 const Search: React.FC<Props> = (props) => {
   const { categories, countries } = props;
 
-  const { query, setQuery } = useGlobals();
+  const { query, setQuery, loading } = useGlobals();
 
   const [values, setValues] = useState<Query>({
     category: categories[0].id,
@@ -73,6 +73,7 @@ const Search: React.FC<Props> = (props) => {
             type="submit"
             buttonStyles="contained"
             endIcon={<SearchOutlined />}
+            loading={loading}
           >
             Search
           </Button>
