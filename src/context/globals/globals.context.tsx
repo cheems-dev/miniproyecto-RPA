@@ -23,6 +23,10 @@ const initData = {
 
 export const GlobalsContext = createContext<GlobalsProviderValue>({
   query: initData,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setQuery(value: React.SetStateAction<Query>): void {
+    throw new Error("Function not implemented.");
+  },
 });
 
 const GlobalsProvider: React.FC<Props> = (props) => {
