@@ -18,8 +18,8 @@ const NewsList: React.FC<Props> = (props) => {
   return (
     <>
       <section className={classes.container}>
-        {!!data?.length &&
-          data?.map((topNew, id) => (
+        {!!data.length &&
+          data.map((topNew, id) => (
             <NewsCardImage
               key={id}
               title={topNew.title}
@@ -28,6 +28,7 @@ const NewsList: React.FC<Props> = (props) => {
               date={topNew.publishedAt ? formatDate(topNew.publishedAt) : ""}
               image={topNew.urlToImage}
               url={topNew.url}
+              id={topNew.id}
             />
           ))}
       </section>

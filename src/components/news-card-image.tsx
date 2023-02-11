@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import Button from "./global/button";
 
 interface Props {
@@ -9,6 +11,12 @@ interface Props {
   image?: string;
   author?: string;
   url?: string;
+  id?: number;
+}
+
+interface Payload {
+  id: number;
+  title: string;
 }
 
 const classes = {
@@ -23,7 +31,28 @@ const classes = {
 
 const NewsCardImage: React.FC<Props> = (props) => {
   const { title, text, date, image, author } = props;
-  const { url } = props;
+  const { url, id } = props;
+
+  const navigate = useNavigate();
+
+  const handleClickUrl = (payload: Payload) => {
+    const result = payload.title.toLowerCase().split(" ").join("-");
+    const friendlyUrl = result.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    navigate(`/premium/${friendlyUrl}/${payload.id}`);
+  };
+  const renderButton = () =>
+    id && title ? (
+      <Button
+        buttonStyles="contained"
+        onClick={() => handleClickUrl({ id, title })}
+      >
+        Ver noticia
+      </Button>
+    ) : (
+      <a href={url} target="_blank" rel="noreferrer" className={classes.href}>
+        <Button buttonStyles="contained">Ver más</Button>
+      </a>
+    );
 
   return (
     <div className={classes.card}>
@@ -47,9 +76,7 @@ const NewsCardImage: React.FC<Props> = (props) => {
           {title}
         </h3>
         <p itemProp="description">{text || NewsCardImage.defaultProps?.text}</p>
-        <a href={url} target="_blank" rel="noreferrer" className={classes.href}>
-          <Button buttonStyles="contained">Ver más</Button>
-        </a>
+        {renderButton()}
       </div>
     </div>
   );

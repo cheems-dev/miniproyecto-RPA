@@ -9,7 +9,7 @@ interface ResponseState {
   totalResults: number;
 }
 
-const useTopNew = (query: Query): [news: ResponseState] => {
+const useTopNews = (query: Query): [news: ResponseState] => {
   const [data, setData] = useState<ResponseState>({
     news: [],
     totalResults: 0,
@@ -29,4 +29,4 @@ const useTopNew = (query: Query): [news: ResponseState] => {
   return [data];
 };
 
-export default useTopNew;
+export default useTopNews;

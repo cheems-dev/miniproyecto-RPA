@@ -8,7 +8,6 @@ import Select from "./global/select";
 import CONSTANTS from "../config/constants";
 import useGlobals from "../context/globals/globals.hooks";
 import { Query } from "../types/query.types";
-import HELPERS from "../utils/helpers";
 
 const classes = {
   search: "search",
@@ -18,10 +17,20 @@ const classes = {
   form: "search__form",
 };
 
-const { countries, categories } = HELPERS;
 const { PAGE_BY_DEFAULT } = CONSTANTS;
 
-const Search: React.FC = () => {
+interface ArrayInterface {
+  id: string;
+  value: string;
+}
+interface Props {
+  categories: ArrayInterface[];
+  countries: ArrayInterface[];
+}
+
+const Search: React.FC<Props> = (props) => {
+  const { categories, countries } = props;
+
   const { query, setQuery } = useGlobals();
 
   const [values, setValues] = useState<Query>({

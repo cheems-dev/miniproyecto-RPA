@@ -1,16 +1,15 @@
-import axiosDefault from "../config/axios";
+import { axiosDefault, axiosNews } from "../config/axios";
 import CONSTANTS from "../config/constants";
 import { Query } from "../types/query.types";
-import { TopNewResponse } from "../types/top-new.types";
+import { NewsApiResponse, TopNewResponse } from "../types/top-new.types";
 
 const { API } = CONSTANTS;
 const { VITE_APP_API_TOKEN } = API;
 
-export const getTopHeadLinesByQuery = ({ query }: { query: string }) => {
-  return axiosDefault.get("/top-headlines", {
+export const getNews = (payload?: Query): Promise<NewsApiResponse> => {
+  return axiosNews.get("/top-headlines", {
     params: {
-      apiKey: API.VITE_APP_API_TOKEN,
-      q: query,
+      ...payload,
     },
   });
 };
@@ -18,13 +17,10 @@ export const getTopHeadLinesByQuery = ({ query }: { query: string }) => {
 export const getTopHeadLinesByCategoryAndCountry = (
   payload: Query
 ): Promise<TopNewResponse> => {
-  const { category, country, page } = payload;
   return axiosDefault.get("/top-headlines", {
     params: {
       apiKey: VITE_APP_API_TOKEN,
-      category,
-      country,
-      page,
+      ...payload,
     },
   });
 };
