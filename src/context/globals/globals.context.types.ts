@@ -11,4 +11,6 @@ export interface GlobalsProviderProps {
 export interface GlobalsProviderValue {
   query: Query;
   setQuery: Dispatch<SetStateAction<Query>>;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }

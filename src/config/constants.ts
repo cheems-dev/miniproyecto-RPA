@@ -13,11 +13,12 @@ const CONSTANTS = {
     SIGN_USER: "/login",
   },
   TOTAL_NEW_BY_DEFAULT: 20,
+  TOTAL_NEW_PREMIUM_BY_DEFAULT: 10,
   PAGE_BY_DEFAULT: 1,
   API: {
     REACT_APP_API_URL: import.meta.env.VITE_APP_API_URL,
     VITE_APP_API_TOKEN: import.meta.env.VITE_APP_API_TOKEN,
-    REACT_APP_API_AUTH_URL: import.meta.env.VITE_APP_API_AUTH_URL,
+    REACT_APP_API_NEW_URL: import.meta.env.VITE_APP_API_AUTH_URL,
     REACT_APP_PLATFORM: "WEB",
     // Mock services, change to false if you don't want to mock
     MOCK_SERVICES: false,
