@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 
-import UserContext from "../context/users-context";
+import CONSTANTS from "../config/constants";
+import useGlobals from "../context/globals/globals.hooks";
+import UserContext from "../context/users/users-context";
+import HELPERS from "../utils/helpers";
+
+const { countriesPremium, categoriesPremium } = HELPERS;
+const { PAGE_BY_DEFAULT } = CONSTANTS;
 
 const classes = {
   form: "form",
@@ -17,8 +23,14 @@ const classes = {
 
 const LoginPage: React.FC = () => {
   const { login } = useContext(UserContext);
+  const { setQuery } = useGlobals();
 
   const handleSubmit = () => {
+    setQuery({
+      country: countriesPremium[0].id,
+      category: categoriesPremium[0].id,
+      page: PAGE_BY_DEFAULT,
+    });
     login("jair@gmail.com", "12345", true);
   };
 
@@ -45,7 +57,7 @@ const LoginPage: React.FC = () => {
             value="jair@gmail.com"
             id="email"
             name="email"
-            required
+            readOnly
           />
         </div>
         <div className={classes.group}>
@@ -58,7 +70,7 @@ const LoginPage: React.FC = () => {
             value="123456"
             id="password"
             name="password"
-            required
+            readOnly
           />
         </div>
         <button onClick={handleSubmit} className={classes.submit} type="submit">

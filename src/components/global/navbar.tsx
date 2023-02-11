@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 
 import Button from "./button";
 import CONSTANTS from "../../config/constants";
-import UserContext from "../../context/users-context";
+import useGlobals from "../../context/globals/globals.hooks";
+import UserContext from "../../context/users/users-context";
 import useWindow from "../../hooks/useWindow";
 import HELPERS from "../../utils/helpers";
+
+const { countries, categories } = HELPERS;
+const { PAGE_BY_DEFAULT } = CONSTANTS;
 
 const classes = {
   navbar: "navbar",
@@ -25,8 +29,18 @@ const { BREAKPOINTS } = CONSTANTS;
 
 const Navbar: React.FC = () => {
   const { user, logout } = useContext(UserContext);
+  const { setQuery } = useGlobals();
   const [open, setOpen] = useState(false);
   const [windowSize] = useWindow();
+
+  const handleLogout = () => {
+    setQuery({
+      country: countries[0].id,
+      category: categories[0].id,
+      page: PAGE_BY_DEFAULT,
+    });
+    logout();
+  };
 
   const renderHamburgerMenu = (className: string, onClick: () => void) =>
     open ? (
@@ -79,7 +93,7 @@ const Navbar: React.FC = () => {
             </Link>
           ) : (
             <Button
-              onClick={logout}
+              onClick={() => handleLogout()}
               buttonStyles="contained"
               endIcon={<LogoutOutlined />}
             >

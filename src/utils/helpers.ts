@@ -68,5 +68,22 @@ const HELPERS = {
     { route: "/", name: "Inicio" },
     { route: "/auth", name: "Premium" },
   ],
+  countriesPremium: [
+    { id: "", value: "Todos" },
+    { id: "ar", value: "Argentina" },
+    { id: "pe", value: "Peru" },
+    { id: "ru", value: "Rusia" },
+    { id: "nz", value: "Nueva Zelanda" },
+    { id: "ve", value: "Venezuela" },
+    { id: "co", value: "Colombia" },
+  ],
+  categoriesPremium: [
+    { id: "", value: "Todos" },
+    { id: "business", value: "Negocios" },
+    { id: "entertainment", value: "Entretenimiento" },
+    { id: "science", value: "Ciencia" },
+    { id: "sport", value: "Deporte" },
+    { id: "tecnology", value: "Tecnologia" },
+  ],
 };
 export default HELPERS;

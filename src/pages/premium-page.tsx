@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import Pagination from "../components/pagination";
+import Search from "../components/search";
+import CONSTANTS from "../config/constants";
+import useGlobals from "../context/globals/globals.hooks";
+import useNews from "../hooks/useNews";
+import HELPERS from "../utils/helpers";
+import getTotalPagination from "../utils/pagination";
 
 const classes = {
   card: "card",
@@ -17,19 +24,14 @@ const classes = {
   buton: "card__button",
 };
 
-// TODO: pending
+const { countriesPremium, categoriesPremium } = HELPERS;
+const { TOTAL_NEW_PREMIUM_BY_DEFAULT } = CONSTANTS;
+
 const PremiumPage: React.FC = () => {
-  const [news, setNews] = useState([]);
-
   const navigate = useNavigate();
+  const { query } = useGlobals();
 
-  const fetchData = async () => {
-    const { data } = await axios.get(
-      "https://rpa-news.onrender.com/top-headlines"
-    );
-
-    setNews(data?.news?.docs);
-  };
+  const [data] = useNews(query);
 
   const handleClickUrl = (id: number, title: string) => {
     const url = title.toLowerCase().split(" ").join("-");
@@ -37,15 +39,18 @@ const PremiumPage: React.FC = () => {
     navigate(`/premium/${friendlyUrl}/${id}`);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <>
+      <Search countries={countriesPremium} categories={categoriesPremium} />
+      <Pagination
+        totalPages={getTotalPagination(
+          data.totalResults,
+          TOTAL_NEW_PREMIUM_BY_DEFAULT
+        )}
+      />
       <div className={classes.card}>
-        {!!news?.length &&
-          news?.map(
+        {!!data.news?.length &&
+          data.news?.map(
             (
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               { id, urlToImage, category, title, description, author }: any,

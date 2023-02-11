@@ -1,4 +1,4 @@
-import axiosDefault from "../config/axios";
+import { axiosDefault } from "../config/axios";
 import CONSTANTS from "../config/constants";
 
 const endpoint = "everything";

@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App";
 import AxiosInterceptor from "./config/interceptor";
-import UserProvider from "./context/users-provider";
+import UserProvider from "./context/users/users-provider";
 
 AxiosInterceptor();
 
