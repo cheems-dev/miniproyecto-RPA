@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
 import NewsList from "../components/news-list";
+import Pagination from "../components/pagination";
 import Search from "../components/search";
+import useGlobals from "../context/globals/globals.hooks";
 import useTopNew from "../hooks/useTopNew";
-import { Query } from "../types/query.types";
-import HELPERS from "../utils/helpers";
-
-const { categories, countries } = HELPERS;
+import getTotalPagination from "../utils/pagination";
 
 const HomePage: React.FC = () => {
-  const [query, setQuery] = useState<Query>({
-    category: categories[0].id,
-    country: countries[1].id,
-  });
+  const { query } = useGlobals();
 
-  const [news] = useTopNew(query);
+  const [data] = useTopNew(query);
 
   return (
     <>
-      <Search setQuery={setQuery} />
-      <NewsList data={news} />
+      <Search />
+      <Pagination totalPages={getTotalPagination(data.totalResults)} />
+      <NewsList data={data.news} />
     </>
   );
 };

@@ -6,13 +6,19 @@
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: $z-menu;
   @include shadow-sm;
 
   &__container {
-    width: $layout-width;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: $layout-width-sm;
+
+    @include tablet {
+      width: $layout-width;
+    }
   }
 
   &__icon {

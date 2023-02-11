@@ -1,16 +1,13 @@
 import React, { useContext, useState } from "react";
 
-import {
-  UserOutlined,
-  MenuOutlined,
-  CloseOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, MenuOutlined } from "@ant-design/icons";
+import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import Button from "./button";
-/* import useWindow from "../../hooks/useWindow"; */
+import CONSTANTS from "../../config/constants";
 import UserContext from "../../context/users-context";
+import useWindow from "../../hooks/useWindow";
 import HELPERS from "../../utils/helpers";
 
 const classes = {
@@ -24,12 +21,13 @@ const classes = {
 };
 
 const { links } = HELPERS;
+const { BREAKPOINTS } = CONSTANTS;
 
 const Navbar: React.FC = () => {
   const { user, logout } = useContext(UserContext);
   const [open, setOpen] = useState(false);
-  /*  const [windowSize] = useWindow();
-   */
+  const [windowSize] = useWindow();
+
   const renderHamburgerMenu = (className: string, onClick: () => void) =>
     open ? (
       <CloseOutlined className={className} onClick={onClick} />
@@ -37,8 +35,10 @@ const Navbar: React.FC = () => {
       <MenuOutlined className={className} onClick={onClick} />
     );
 
-  /* && windowSize[0] <= BREAKPOINTS.tablet */
-  const styleClass = () => (open ? classes.menu__responsive_open : "");
+  const styleClass = () =>
+    open && windowSize[0] <= BREAKPOINTS.tablet
+      ? classes.menu__responsive_open
+      : "";
 
   const renderNavbarResponsive = (onClick: () => void) => (
     <div className={`${classes.menu__responsive} ${styleClass()}`}>

@@ -2,9 +2,16 @@
   display: flex;
   justify-content: center;
 
-  /* TODO: Pending */
   &__container {
-    padding-top: 2.4rem;
-    width: $layout-width;
+    padding-top: 1.6rem;
+    width: $layout-width-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    @include tablet {
+      padding-top: 2.4rem;
+      width: $layout-width;
+    }
   }
 }

@@ -1,0 +1,11 @@
+.pagination {
+  &__button {
+    padding: 0.8rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+}
