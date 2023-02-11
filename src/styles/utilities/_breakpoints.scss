@@ -50,8 +50,14 @@ $breakpoints: (
   }
 }
 
-@mixin breakpoint($bp: 0) {
-  @media (min-width: $bp) {
+@mixin login($bp: 382px) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin premiun($bp: 518px) {
+  @media (max-width: $bp) {
     @content;
   }
 }
