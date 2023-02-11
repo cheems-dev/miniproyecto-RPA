@@ -28,12 +28,7 @@ const Select: React.FC<Props> = (props) => {
       <label htmlFor={id} className={classes.label}>
         {label}
       </label>
-      <select
-        className={classes.select}
-        id={id}
-        name="country"
-        onChange={onChange}
-      >
+      <select className={classes.select} id={id} name={id} onChange={onChange}>
         {options.map((option, index) => (
           <option className={classes.option} key={index} value={option.id}>
             {option.value}

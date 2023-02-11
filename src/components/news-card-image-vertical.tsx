@@ -19,7 +19,15 @@ const NewsCardImageVertical: React.FC<Props> = (props) => {
 
   return (
     <div className={classes.card}>
-      <img className={classes.image} src={image} alt="image" />
+      <img
+        className={classes.image}
+        src={image || NewsCardImageVertical.defaultProps?.image}
+        alt="image"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = "public/404.png";
+        }}
+      />
       <div className={classes.info}>
         <span itemProp="datePublished" className={classes.date}>
           {date}
@@ -35,9 +43,7 @@ const NewsCardImageVertical: React.FC<Props> = (props) => {
 NewsCardImageVertical.defaultProps = {
   title: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.",
   date: "December 12,2022",
-  image:
-    // eslint-disable-next-line max-len
-    "https://elcomercio.pe/resizer/Vt2fd6RF3B42JpqE79NHbKucwmA=/680x680/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/YAUXM2C4NVGYLLPNC6RLF2OJXM.jfif",
+  image: "public/404.png",
 };
 
 export default NewsCardImageVertical;

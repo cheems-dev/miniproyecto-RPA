@@ -4,19 +4,29 @@ import { getTopHeadLinesByCategoryAndCountry } from "../services/top-headlines.s
 import { Query } from "../types/query.types";
 import { TopNew } from "../types/top-new.types";
 
-const useTopNew = (query: Query): [news: TopNew[]] => {
-  const [news, setNews] = useState<TopNew[]>([]);
+interface ResponseState {
+  news: TopNew[];
+  totalResults: number;
+}
+
+const useTopNew = (query: Query): [news: ResponseState] => {
+  const [data, setData] = useState<ResponseState>({
+    news: [],
+    totalResults: 0,
+  });
 
   const fetchData = async (payload: Query) => {
     const response = await getTopHeadLinesByCategoryAndCountry(payload);
-    return response?.articles;
+    return response;
   };
 
   useEffect(() => {
-    fetchData(query).then((resolve) => setNews(resolve));
+    fetchData(query).then((resolve) =>
+      setData({ news: resolve.articles, totalResults: resolve.totalResults })
+    );
   }, [query]);
 
-  return [news];
+  return [data];
 };
 
 export default useTopNew;
